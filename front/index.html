@@ -1,0 +1,131 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>Document analyzer</title>
+
+    <!-- Bootstrap core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/file_upload.css" rel="stylesheet">
+
+<link rel="apple-touch-icon" href="https://getbootstrap.com/docs/4.6/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="https://getbootstrap.com/docs/4.6/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="https://getbootstrap.com/docs/4.6/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="mask-icon" href="https://getbootstrap.com/docs/4.6/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
+<link rel="icon" href="https://getbootstrap.com/docs/4.6/assets/img/favicons/favicon.ico">
+<meta name="theme-color" content="#563d7c">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+  </head>
+<body class="bg-light">
+    
+
+  <div class="nav-scroller bg-white shadow-sm ">
+    <div class="container">
+      <nav class="nav nav-underline justify-content-md-center">
+        <a class="nav-link active" href="#">App</a>
+        <a class="nav-link" href="#">
+          Uploaded files
+          <span class="badge badge-pill bg-light align-text-bottom">27</span>
+        </a>
+        <a class="nav-link" href="login.html">Login</a>
+        <a class="nav-link" href="register.html">Register</a>
+      </nav>
+    </div>
+  </div>
+
+  <main role="main" class="container">
+    <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
+      <img class="mr-3" src="https://getbootstrap.com/docs/4.6/assets/brand/bootstrap-outline.svg" alt="" width="48" height="48">
+      <div class="lh-100">
+        <h6 class="mb-0 text-white lh-100">Prizma</h6>
+        <small>AI-based hi-tech solutions</small>
+      </div>
+    </div>
+
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+      <div class="container d-flex col-8">
+        <form id="fm" name="fm" class="justify-content-center">
+          <div class="form-group row">
+            <label for="file" class="col-sm-6 col-form-label">Select image of document to analyze</label>
+            <input name="file" id="file" class="col-sm-6" type="file" class="form-control form-control-lg">
+          </div>
+          <div class="d-flex justify-content-center my-3">
+            <button id="upload-file-btn" class="btn btn-primary" onclick="onFileUpload()">Upload & analyze</button>
+            <div id="uploading-spinner" class="spinner-border" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+          <div id="process-result-alerts" class="d-flex justify-content-center my-3 row">
+            <div id="correct-alert" class="alert alert-success col-12" role="alert">
+              <h4 class="alert-heading"> Correct!</h4>
+              <p>Your document is correct!</p>
+            </div>
+            <div id="wrong-alert" class="alert alert-secondary col-12" role="alert">
+              <h4 class="alert-heading">There are some errors...</h4>
+              <p class="cropped-text">Aww yeah, you successfully read this important alert message. <b class="bg-danger">Thes exemple</b> text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+              <!--hr>
+              <b class="mb-0">Maybe you mean:</b> <span class="correct-text">This example</span-->
+            </div>
+            <div id="error-alert" class="alert alert-danger col-12" role="alert">
+              <h4 class="alert-heading">Server error...</h4>
+              <p class="cropped-text">Aww yeah, you successfully read this important alert message. <b class="bg-danger">Thes exemple</b> text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+      <h6 class="border-bottom border-gray pb-2 mb-0">Recent updates</h6>
+      <div id="recent-updates" class="col-12">
+        <div class="media text-muted pt-3">
+          <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <strong class="d-block text-gray-dark">my-document.jpg</strong>
+            <b>Verdict:</b> Playing ping pong all night long, everything's all neon and hazy. Yeah, she's so in demand. She's sweet as pie but if you break her heart. But down to earth. It's time to face the music I'm no longer your muse. I guess that I forgot I had a choice.
+          </p>
+          <h6 class="">12.12.2022 16:45</h6>
+        </div>
+        <div class="media text-muted pt-3">
+          <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#e83e8c"/><text x="50%" y="50%" fill="#e83e8c" dy=".3em">32x32</text></svg>
+
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <strong class="d-block text-gray-dark">main-contract.png</strong>
+            <b>Verdict:</b> Standing on the frontline when the bombs start to fall. Heaven is jealous of our love, angels are crying from up above. Can't replace you with a million rings. Boy, when you're with me I'll give you a taste. There’s no going back. Before you met me I was alright but things were kinda heavy. Heavy is the head that wears the crown.
+          </p>
+        </div>
+        <div class="media text-muted pt-3">
+          <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#6f42c1"/><text x="50%" y="50%" fill="#6f42c1" dy=".3em">32x32</text></svg>
+
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <strong class="d-block text-gray-dark">letter_to_bank.png</strong>
+            <b>Verdict:</b> Will you do the same for me? It's time to face the music I'm no longer your muse. Heard it's beautiful, be the judge and my girls gonna take a vote. I can feel a phoenix inside of me. Heaven is jealous of our love, angels are crying from up above. Yeah, you take me to utopia.
+          </p>
+        </div>
+      </div>
+      <small class="d-block text-right mt-3">
+        <a href="#">All updates</a>
+      </small>
+    </div>
+  </main>
+
+    <script type="text/javascript" src="js/jquery-3.6.3.min.js"></script>
+    <script type="text/javascript" src="js/file-upload.js"></script>
+  </body>
+</html>
